@@ -97,6 +97,9 @@ module SimpleCaptcha #:nodoc
         case code
           when 'numeric' then 
             SimpleCaptcha.length.times{value << (48 + rand(10)).chr}
+          when 'distinguishable' then
+            charset = '234679ABCEFGHJLMNPQRTUVWYZ'
+            SimpleCaptcha.length.times{value << charset[rand(charset.size)]}
           else
             SimpleCaptcha.length.times{value << (65 + rand(26)).chr}
         end
